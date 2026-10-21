@@ -13,6 +13,8 @@ from presentacion.presentacion_estudiante import (
     eliminar_estudiante
 )
 
+PROMPT_OPCION = 'Seleccione su opción: '
+
 def mostrar_menu(titulo, opciones):
     print(titulo)
     print(f'{"=" * len(titulo)}\n')
@@ -22,7 +24,7 @@ def mostrar_menu(titulo, opciones):
 def cargar_menu_estudiantes():
     while True:
         mostrar_menu(menu_estudiantes, diccionario_menu_estudiantes)
-        opcion = input('Seleccione su opción: ')
+        opcion = input(PROMPT_OPCION)
         print()
 
         match opcion:
@@ -43,7 +45,7 @@ def cargar_menu_estudiantes():
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
-        opcion = input('Seleccione su opción: ')
+        opcion = input(PROMPT_OPCION)
         print()
 
         match opcion:
@@ -63,7 +65,7 @@ def cargar_menu():
 
     while True:
         mostrar_menu(menu_principal, diccionario_menu_principal)
-        opcion = input('Seleccione su opción: ')
+        opcion = input(PROMPT_OPCION)
         print()
 
         match opcion:
