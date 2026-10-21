@@ -62,7 +62,7 @@ def modificar_estudiante():
     else:
         print('Estudiante no encontrado o inactivo.')
 
-def eliminar_estudiante_ui():
+def eliminar_estudiante():
     print("\n--- Eliminar Estudiante ---")
     rut = input('Ingrese RUT del estudiante a eliminar: ')
     estudiante = buscar_por_rut(rut)

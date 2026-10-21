@@ -4,8 +4,7 @@ from datos import (
     buscar_por_rut,
     registrar_estudiante,
     actualizar_estudiante,
-    eliminar_estudiante,
-    Estudiante
+    eliminar_estudiante
 )
 from auxiliares import mensaje_error
 
