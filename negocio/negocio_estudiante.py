@@ -60,11 +60,8 @@ def modificar_datos_estudiante(id_estudiante: int, nombre: str, apellido: str, r
             apellido=apellido,
             rut=rut,
             matricula=matricula,
-            fecha_nacimiento=None,
             correo=correo,
-            telefono=telefono,
-            curso=None,
-            direccion=None
+            telefono=telefono
         )
         print("Datos del estudiante actualizados correctamente.")
     except Exception as error:

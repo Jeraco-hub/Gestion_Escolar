@@ -35,18 +35,15 @@ def registrar_estudiante(nombre, apellido, rut, matricula, fecha_nacimiento, cor
         print(f"Error al registrar estudiante: {e}")
         return None
 
-def actualizar_estudiante(id_estudiante, nombre, apellido, rut, matricula, fecha_nacimiento, correo, telefono, curso, direccion):
+def actualizar_estudiante(id_estudiante, nombre, apellido, rut, matricula, correo, telefono):
     try:
         consulta = Estudiante.update(
             nombre=nombre,
             apellido=apellido,
             rut=rut,
             matricula=matricula,
-            fecha_nacimiento=fecha_nacimiento,
             correo=correo,
-            telefono=telefono,
-            curso=curso,
-            direccion=direccion
+            telefono=telefono
         ).where(Estudiante.id_estudiante == id_estudiante)
         consulta.execute()
     except Exception as e:
