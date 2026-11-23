@@ -1,14 +1,8 @@
-from peewee import SQL, Model, AutoField, CharField, IntegerField, DateField
-from datos.conexion import conectar
+from peewee import SQL, AutoField, CharField, IntegerField, DateField
+from datos.model_base import ModelBase
 from auxiliares.datos_app import defecto
 
-base_datos = conectar()
-
-class BaseModel(Model):
-    class Meta:
-        database = base_datos
-
-class Docente(BaseModel):
+class Docente(ModelBase):
     id_docente = AutoField()
     nombre = CharField(max_length=50)
     apellido = CharField(max_length=50)

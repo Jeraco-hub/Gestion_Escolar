@@ -1,14 +1,8 @@
-from peewee import SQL, Model, AutoField, IntegerField, DateField
-from datos.conexion import conectar
+from peewee import SQL, AutoField, IntegerField, DateField
+from datos.model_base import ModelBase
 from auxiliares.datos_app import defecto
 
-base_datos = conectar()
-
-class BaseModel(Model):
-    class Meta:
-        database = base_datos
-
-class PeriodoAcademico(BaseModel):
+class PeriodoAcademico(ModelBase):
     id_periodo = AutoField()
     ano = IntegerField()
     semestre = IntegerField()
