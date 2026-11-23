@@ -1,5 +1,11 @@
 # Sistema de Gestión Escolar - POO
 
+## Integrantes
+
+
+
+**Asignatura:** Programación Orientada a Objetos - Evaluación N°3
+
 Aplicación de gestión escolar desarrollada bajo el paradigma de **Programación Orientada a Objetos (POO)**, con diseño modular en capas y persistencia en **MySQL** mediante el ORM **Peewee**.
 
 ---
@@ -10,11 +16,11 @@ El sistema está diseñado siguiendo principios de ingeniería de software orien
 
 | Concepto POO | Implementación en el Proyecto |
 |---|---|
-| **Clase / Modelo** | Molde que define la estructura y tipos de datos (ej: `Estudiante`, `Docente`, `Colegio`, `Pais`). Heredan de `BaseModel`. |
+| **Clase / Modelo** | Molde que define la estructura y tipos de datos (ej: `Estudiante`, `Docente`, `Colegio`, `Pais`). Heredan de `ModelBase`. |
 | **Objeto / Instancia** | Cada registro o fila obtenido de la base de datos se manipula como una instancia en memoria en Python. |
 | **Atributos** | Campos del modelo mapeados a columnas SQL (`rut`, `nombre`, `matricula`, `correo`, `iso2`, etc.). |
 | **Métodos y Persistencia** | Métodos como `.save()`, `.create()`, `.select()` y `.update()` para operaciones CRUD. |
-| **Herencia** | Todas las clases de entidad heredan de `BaseModel`, la cual comparte la conexión activa a MySQL. |
+| **Herencia** | Todas las clases de entidad heredan de `ModelBase`, la cual comparte la conexión activa a MySQL. |
 | **Encapsulamiento** | Cada capa maneja su propia responsabilidad interna; la presentación no realiza consultas SQL directas. |
 | **Abstracción** | Los repositorios exponen funciones claras (`listado_estudiantes()`, `registrar_estudiante()`) sin exponer detalles de bajo nivel. |
 
@@ -34,16 +40,18 @@ Gestion_Escolar/
 │
 ├── auxiliares/                    # Constantes globales y configuración transversal
 │   ├── __init__.py
-│   ├── datos_main.py               # Nombre de app, versión y restricciones por defecto
+│   ├── datos_app.py               # Nombre de app, versión y restricciones por defecto
 │   ├── entradas.py                # Helpers de entrada (pedir_texto, pedir_entero, pedir_fecha, pedir_ponderacion)
-│   ├── menu_main.py                # Textos y opciones de los menús de consola
+│   ├── menu_app.py                # Textos y opciones de los menús de consola
 │   └── validaciones.py            # Validaciones de RUT, correo, largo, fecha y contraseña
 │
 ├── datos/                         # Capa de Acceso a Datos y Persistencia
 │   ├── __init__.py
 │   ├── conexion.py                # Conexión centralizada a MySQL con Peewee y Decouple
+│   ├── model_base.py                # Clase base ORM (ModelBase) compartida por los modelos
 │   │
-│   ├── modelos/                   # Modelos de datos (Clases ORM)│   │   ├── asignatura.py
+│   ├── modelos/                   # Modelos de datos (Clases ORM)
+│   │   ├── asignatura.py
 │   │   ├── asistencia.py
 │   │   ├── calificacion.py
 │   │   ├── colegio.py
@@ -154,9 +162,9 @@ python -m pip install -r requirements.txt
 1. Abrir MySQL Workbench o cliente por consola.
 2. Crear la base de datos `gestion_escolar`.
 3. Ejecutar `datos/sql/01_crear_tablas.sql` (crea todas las tablas).
-4. (Opcional) Ejecutar `datos/sql/02_datos_prueba.sql` para datos de prueba (incluye `admin@colegio.cl` / `admin123`).
+4. (Opcional) Ejecutar `datos/sql/02_datos_prueba.sql` para datos de prueba (incluye `admin@colegio.cl` / `Admin#2026`).
 
-### Paso 2: Crear el archivo `.env`
+### Paso 2: Crear el archivo `.env` (copiar `.env.example` y completar)
 
 ```dotenv
 db=gestion_escolar
@@ -179,7 +187,7 @@ python main.py
 Al arrancar, aparece el **Inicio de Sesión**. Ingresa con:
 
 - **Correo**: `admin@colegio.cl`
-- **Contraseña**: `admin123`
+- **Contraseña**: `Admin#2026`
 
 ---
 
@@ -187,8 +195,8 @@ Al arrancar, aparece el **Inicio de Sesión**. Ingresa con:
 
 ### Login
 - Autenticación contra `usuarios` (correo + contraseña).
-- Contraseña oculta con `getpass`.
-- Soporte para texto plano y bcrypt (prefijo `$2b$` / `$2a$`).
+- Contraseña oculta con `maskpass`.
+- Contraseñas almacenadas con hash bcrypt (nunca en texto plano).
 - Máximo 3 intentos.
 
 ### Módulos con CRUD completo (3 capas)

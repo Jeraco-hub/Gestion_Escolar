@@ -14,17 +14,24 @@ def buscar_estado_asistencia(nombre_estado):
     return EstadoAsistencia.get_or_none(EstadoAsistencia.estado == nombre_estado)
 
 
+def guardar_estado_asistencia(estado_asistencia: EstadoAsistencia):
+    return estado_asistencia.save()
+
+
 def registrar_estado_asistencia(estado, descripcion):
-    nuevo = EstadoAsistencia.create(estado=estado, descripcion=descripcion)
+    nuevo = EstadoAsistencia(estado=estado, descripcion=descripcion)
+    guardar_estado_asistencia(nuevo)
     return nuevo
 
 
 def actualizar_estado_asistencia(id_estado, estado, descripcion):
-    filas = (EstadoAsistencia
-             .update(estado=estado, descripcion=descripcion)
-             .where(EstadoAsistencia.id_estado_asistencia == id_estado)
-             .execute())
-    return filas
+    estado_asistencia = obtener_estado_asistencia(id_estado)
+    if not estado_asistencia:
+        return 0
+    estado_asistencia.estado = estado
+    estado_asistencia.descripcion = descripcion
+    guardar_estado_asistencia(estado_asistencia)
+    return 1
 
 
 def eliminar_estado_asistencia(id_estado):

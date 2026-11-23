@@ -18,9 +18,13 @@ def buscar_periodo(ano, semestre, colegio):
     )
 
 
+def guardar_periodo(periodo: PeriodoAcademico):
+    return periodo.save()
+
+
 def registrar_periodo(ano, semestre, fecha_inicio, fecha_fin, colegio):
     try:
-        nuevo = PeriodoAcademico.create(
+        nuevo = PeriodoAcademico(
             ano=ano,
             semestre=semestre,
             fecha_inicio=fecha_inicio,
@@ -28,6 +32,7 @@ def registrar_periodo(ano, semestre, fecha_inicio, fecha_fin, colegio):
             colegio=colegio,
             habilitado=1
         )
+        guardar_periodo(nuevo)
         return nuevo
     except Exception as error:
         print(f'Error al registrar período: {error}')
@@ -35,17 +40,16 @@ def registrar_periodo(ano, semestre, fecha_inicio, fecha_fin, colegio):
 
 
 def actualizar_periodo(id_periodo, ano, semestre, fecha_inicio, fecha_fin, colegio):
-    filas = (PeriodoAcademico
-             .update(
-                 ano=ano,
-                 semestre=semestre,
-                 fecha_inicio=fecha_inicio,
-                 fecha_fin=fecha_fin,
-                 colegio=colegio
-             )
-             .where(PeriodoAcademico.id_periodo == id_periodo)
-             .execute())
-    return filas
+    periodo = obtener_periodo(id_periodo)
+    if not periodo:
+        return 0
+    periodo.ano = ano
+    periodo.semestre = semestre
+    periodo.fecha_inicio = fecha_inicio
+    periodo.fecha_fin = fecha_fin
+    periodo.colegio = colegio
+    guardar_periodo(periodo)
+    return 1
 
 
 def eliminar_periodo(id_periodo):

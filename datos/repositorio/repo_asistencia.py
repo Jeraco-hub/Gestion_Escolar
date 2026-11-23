@@ -32,9 +32,13 @@ def asistencias_por_curso(id_curso, fecha):
     return list(asistencias)
 
 
+def guardar_asistencia(asistencia: Asistencia):
+    return asistencia.save()
+
+
 def registrar_asistencia(estudiante, curso, fecha, estado_asistencia, justificacion):
     try:
-        nueva = Asistencia.create(
+        nueva = Asistencia(
             estudiante=estudiante,
             curso=curso,
             fecha=fecha,
@@ -42,6 +46,7 @@ def registrar_asistencia(estudiante, curso, fecha, estado_asistencia, justificac
             justificacion=justificacion,
             habilitado=1
         )
+        guardar_asistencia(nueva)
         return nueva
     except Exception as error:
         print(f'Error al registrar asistencia: {error}')
@@ -49,17 +54,16 @@ def registrar_asistencia(estudiante, curso, fecha, estado_asistencia, justificac
 
 
 def actualizar_asistencia(id_asistencia, estudiante, curso, fecha, estado_asistencia, justificacion):
-    filas = (Asistencia
-             .update(
-                 estudiante=estudiante,
-                 curso=curso,
-                 fecha=fecha,
-                 estado_asistencia=estado_asistencia,
-                 justificacion=justificacion
-             )
-             .where(Asistencia.id_asistencia == id_asistencia)
-             .execute())
-    return filas
+    asistencia = obtener_asistencia(id_asistencia)
+    if not asistencia:
+        return 0
+    asistencia.estudiante = estudiante
+    asistencia.curso = curso
+    asistencia.fecha = fecha
+    asistencia.estado_asistencia = estado_asistencia
+    asistencia.justificacion = justificacion
+    guardar_asistencia(asistencia)
+    return 1
 
 
 def eliminar_asistencia(id_asistencia):

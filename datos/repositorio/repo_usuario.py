@@ -12,15 +12,19 @@ def buscar_por_correo(correo):
     usuario = Usuario.get_or_none(Usuario.correo == correo)
     return usuario
 
+def guardar_usuario(usuario: Usuario):
+    return usuario.save()
+
 def registrar_usuario(nombre, correo, contrasena, colegio):
     try:
-        nuevo = Usuario.create(
+        nuevo = Usuario(
             nombre=nombre,
             correo=correo,
             contrasena=contrasena,
             colegio=colegio,
             habilitado=1
         )
+        guardar_usuario(nuevo)
         return nuevo
     except Exception as e:
         print(f"Error al registrar usuario: {e}")
@@ -28,13 +32,14 @@ def registrar_usuario(nombre, correo, contrasena, colegio):
 
 def actualizar_usuario(id_usuario, nombre, correo, contrasena, colegio):
     try:
-        consulta = Usuario.update(
-            nombre=nombre,
-            correo=correo,
-            contrasena=contrasena,
-            colegio=colegio
-        ).where(Usuario.id_usuario == id_usuario)
-        consulta.execute()
+        usuario = obtener_usuario(id_usuario)
+        if not usuario:
+            return
+        usuario.nombre = nombre
+        usuario.correo = correo
+        usuario.contrasena = contrasena
+        usuario.colegio = colegio
+        guardar_usuario(usuario)
     except Exception as e:
         print(f"Error al actualizar usuario: {e}")
 

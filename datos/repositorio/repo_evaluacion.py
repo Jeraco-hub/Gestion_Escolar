@@ -14,15 +14,19 @@ def evaluaciones_por_asignatura(id_asignatura):
     )
     return list(evaluaciones)
 
+def guardar_evaluacion(evaluacion: Evaluacion):
+    return evaluacion.save()
+
 def registrar_evaluacion(nombre, ponderacion, fecha, asignatura):
     try:
-        nueva = Evaluacion.create(
+        nueva = Evaluacion(
             nombre=nombre,
             ponderacion=ponderacion,
             fecha=fecha,
             asignatura=asignatura,
             habilitado=1
         )
+        guardar_evaluacion(nueva)
         return nueva
     except Exception as e:
         print(f"Error al registrar evaluacion: {e}")
@@ -30,13 +34,14 @@ def registrar_evaluacion(nombre, ponderacion, fecha, asignatura):
 
 def actualizar_evaluacion(id_evaluacion, nombre, ponderacion, fecha, asignatura):
     try:
-        consulta = Evaluacion.update(
-            nombre=nombre,
-            ponderacion=ponderacion,
-            fecha=fecha,
-            asignatura=asignatura
-        ).where(Evaluacion.id_evaluacion == id_evaluacion)
-        consulta.execute()
+        evaluacion = obtener_evaluacion(id_evaluacion)
+        if not evaluacion:
+            return
+        evaluacion.nombre = nombre
+        evaluacion.ponderacion = ponderacion
+        evaluacion.fecha = fecha
+        evaluacion.asignatura = asignatura
+        guardar_evaluacion(evaluacion)
     except Exception as e:
         print(f"Error al actualizar evaluacion: {e}")
 

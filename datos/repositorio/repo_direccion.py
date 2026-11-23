@@ -18,15 +18,20 @@ def buscar_direccion(calle, numero, comuna):
     )
 
 
+def guardar_direccion(direccion: Direccion):
+    return direccion.save()
+
+
 def registrar_direccion(calle, numero, comuna, ciudad):
     try:
-        nueva = Direccion.create(
+        nueva = Direccion(
             calle=calle,
             numero=numero,
             comuna=comuna,
             ciudad=ciudad,
             habilitado=1
         )
+        guardar_direccion(nueva)
         return nueva
     except Exception as error:
         print(f'Error al registrar dirección: {error}')
@@ -34,11 +39,15 @@ def registrar_direccion(calle, numero, comuna, ciudad):
 
 
 def actualizar_direccion(id_direccion, calle, numero, comuna, ciudad):
-    filas = (Direccion
-             .update(calle=calle, numero=numero, comuna=comuna, ciudad=ciudad)
-             .where(Direccion.id_direccion == id_direccion)
-             .execute())
-    return filas
+    direccion = obtener_direccion(id_direccion)
+    if not direccion:
+        return 0
+    direccion.calle = calle
+    direccion.numero = numero
+    direccion.comuna = comuna
+    direccion.ciudad = ciudad
+    guardar_direccion(direccion)
+    return 1
 
 
 def eliminar_direccion(id_direccion):

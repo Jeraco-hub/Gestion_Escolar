@@ -12,9 +12,12 @@ def buscar_por_rut(rut):
     docente = Docente.get_or_none(Docente.rut == rut)
     return docente
 
+def guardar_docente(docente: Docente):
+    return docente.save()
+
 def registrar_docente(nombre, apellido, rut, especialidad, fecha_nacimiento, correo, telefono, direccion, colegio):
     try:
-        nuevo = Docente.create(
+        nuevo = Docente(
             nombre=nombre,
             apellido=apellido,
             rut=rut,
@@ -26,6 +29,7 @@ def registrar_docente(nombre, apellido, rut, especialidad, fecha_nacimiento, cor
             colegio=colegio,
             habilitado=1
         )
+        guardar_docente(nuevo)
         return nuevo
     except Exception as e:
         print(f"Error al registrar docente: {e}")
@@ -33,18 +37,19 @@ def registrar_docente(nombre, apellido, rut, especialidad, fecha_nacimiento, cor
 
 def actualizar_docente(id_docente, nombre, apellido, rut, especialidad, fecha_nacimiento, correo, telefono, direccion, colegio):
     try:
-        consulta = Docente.update(
-            nombre=nombre,
-            apellido=apellido,
-            rut=rut,
-            especialidad=especialidad,
-            fecha_nacimiento=fecha_nacimiento,
-            correo=correo,
-            telefono=telefono,
-            direccion=direccion,
-            colegio=colegio
-        ).where(Docente.id_docente == id_docente)
-        consulta.execute()
+        docente = obtener_docente(id_docente)
+        if not docente:
+            return
+        docente.nombre = nombre
+        docente.apellido = apellido
+        docente.rut = rut
+        docente.especialidad = especialidad
+        docente.fecha_nacimiento = fecha_nacimiento
+        docente.correo = correo
+        docente.telefono = telefono
+        docente.direccion = direccion
+        docente.colegio = colegio
+        guardar_docente(docente)
     except Exception as e:
         print(f"Error al actualizar docente: {e}")
 

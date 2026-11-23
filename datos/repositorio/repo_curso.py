@@ -8,15 +8,19 @@ def obtener_curso(id_curso):
     curso = Curso.get_or_none(Curso.id_curso == id_curso)
     return curso
 
+def guardar_curso(curso: Curso):
+    return curso.save()
+
 def registrar_curso(nivel, letra, periodo, colegio):
     try:
-        nuevo = Curso.create(
+        nuevo = Curso(
             nivel=nivel,
             letra=letra,
             periodo=periodo,
             colegio=colegio,
             habilitado=1
         )
+        guardar_curso(nuevo)
         return nuevo
     except Exception as e:
         print(f"Error al registrar curso: {e}")
@@ -24,13 +28,14 @@ def registrar_curso(nivel, letra, periodo, colegio):
 
 def actualizar_curso(id_curso, nivel, letra, periodo, colegio):
     try:
-        consulta = Curso.update(
-            nivel=nivel,
-            letra=letra,
-            periodo=periodo,
-            colegio=colegio
-        ).where(Curso.id_curso == id_curso)
-        consulta.execute()
+        curso = obtener_curso(id_curso)
+        if not curso:
+            return
+        curso.nivel = nivel
+        curso.letra = letra
+        curso.periodo = periodo
+        curso.colegio = colegio
+        guardar_curso(curso)
     except Exception as e:
         print(f"Error al actualizar curso: {e}")
 

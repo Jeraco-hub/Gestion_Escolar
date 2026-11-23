@@ -16,9 +16,12 @@ def buscar_por_matricula(matricula):
     estudiante = Estudiante.get_or_none(Estudiante.matricula == matricula)
     return estudiante
 
+def guardar_estudiante(estudiante: Estudiante):
+    return estudiante.save()
+
 def registrar_estudiante(nombre, apellido, rut, matricula, fecha_nacimiento, correo, telefono, curso, direccion):
     try:
-        nuevo = Estudiante.create(
+        nuevo = Estudiante(
             nombre=nombre,
             apellido=apellido,
             rut=rut,
@@ -30,6 +33,7 @@ def registrar_estudiante(nombre, apellido, rut, matricula, fecha_nacimiento, cor
             direccion=direccion,
             habilitado=1
         )
+        guardar_estudiante(nuevo)
         return nuevo
     except Exception as e:
         print(f"Error al registrar estudiante: {e}")
@@ -37,15 +41,16 @@ def registrar_estudiante(nombre, apellido, rut, matricula, fecha_nacimiento, cor
 
 def actualizar_estudiante(id_estudiante, nombre, apellido, rut, matricula, correo, telefono):
     try:
-        consulta = Estudiante.update(
-            nombre=nombre,
-            apellido=apellido,
-            rut=rut,
-            matricula=matricula,
-            correo=correo,
-            telefono=telefono
-        ).where(Estudiante.id_estudiante == id_estudiante)
-        consulta.execute()
+        estudiante = obtener_estudiante(id_estudiante)
+        if not estudiante:
+            return
+        estudiante.nombre = nombre
+        estudiante.apellido = apellido
+        estudiante.rut = rut
+        estudiante.matricula = matricula
+        estudiante.correo = correo
+        estudiante.telefono = telefono
+        guardar_estudiante(estudiante)
     except Exception as e:
         print(f"Error al actualizar estudiante: {e}")
 
