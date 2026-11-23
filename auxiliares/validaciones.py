@@ -72,3 +72,22 @@ def validar_fecha_nacimiento(fecha_nacimiento):
         mensaje = 'Fecha inválida, ingrese nuevamente...\n'
         fecha_nacimiento = ''
     return fecha_nacimiento, mensaje
+
+
+def validar_contrasena(contrasena):
+    errores = []
+
+    if len(contrasena) < 8 or len(contrasena) > 15:
+        errores.append("La contraseña debe tener entre 8 y 15 caracteres.")
+    if not any(c.isupper() for c in contrasena):
+        errores.append("La contraseña debe contener al menos una letra mayúscula.")
+    if not any(c.islower() for c in contrasena):
+        errores.append("La contraseña debe contener al menos una letra minúscula.")
+    if not any(c.isdigit() for c in contrasena):
+        errores.append("La contraseña debe contener al menos un número.")
+    if not any(c in "!@#$%&/" for c in contrasena):
+        errores.append("La contraseña debe contener al menos uno de estos símbolos: ! @ # $ % & /")
+
+    if len(errores) > 0:
+        contrasena = ''
+    return contrasena, errores

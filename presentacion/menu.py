@@ -4,6 +4,7 @@ from auxiliares import (
     mensaje_error_opcion,
     menu_principal, diccionario_menu_principal,
     menu_estudiantes, diccionario_menu_estudiantes,
+    menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion
 )
 from presentacion.presentacion_estudiante import (
@@ -11,6 +12,12 @@ from presentacion.presentacion_estudiante import (
     crear_estudiante,
     modificar_estudiante,
     eliminar_estudiante
+)
+from presentacion.presentacion_usuario import (
+    mostrar_listado_usuarios,
+    crear_usuario,
+    modificar_usuario,
+    eliminar_usuario
 )
 
 PROMPT_OPCION = 'Seleccione su opción: '
@@ -36,6 +43,27 @@ def cargar_menu_estudiantes():
                 modificar_estudiante()
             case '4':
                 eliminar_estudiante()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_usuarios():
+    while True:
+        mostrar_menu(menu_usuarios, diccionario_menu_usuarios)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_usuarios()
+            case '2':
+                crear_usuario()
+            case '3':
+                modificar_usuario()
+            case '4':
+                eliminar_usuario()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break
@@ -79,6 +107,8 @@ def cargar_menu():
                 print('Módulo en construcción: Calificaciones.\n')
             case '5':
                 cargar_menu_configuracion()
+            case '6':
+                cargar_menu_usuarios()
             case '0':
                 print('Cerrando el sistema...\n')
                 break

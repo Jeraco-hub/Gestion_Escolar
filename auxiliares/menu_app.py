@@ -5,6 +5,7 @@ diccionario_menu_principal = {
     '3': 'Gestión de Cursos y Asignaturas',
     '4': 'Reportes y Calificaciones',
     '5': 'Configuración del Sistema',
+    '6': 'Gestión de Usuarios',
     '0': 'Salir\n'
 }
 
@@ -14,6 +15,15 @@ diccionario_menu_estudiantes = {
     '2': 'Registrar Estudiante',
     '3': 'Modificar Estudiante',
     '4': 'Eliminar Estudiante (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_usuarios = 'Menú Gestión de Usuarios'
+diccionario_menu_usuarios = {
+    '1': 'Listado de Usuarios',
+    '2': 'Registrar Usuario',
+    '3': 'Modificar Usuario',
+    '4': 'Eliminar Usuario (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }
 
