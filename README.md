@@ -141,7 +141,7 @@ python -m pip install -r requirements.txt
 ### Paso 1: Crear la Base de Datos y Tablas
 1. Abrir MySQL Workbench o cliente por consola.
 2. Ejecutar el script DDL ubicado en `datos/sql/2026.09.09_14.25_DDL_gestionescolar.sql`.
-3. (Opcional) Ejecutar los scripts `Insert_*.sql` de la misma carpeta para poblar datos de prueba.
+3. (Opcional) Ejecutar los scripts `Insert_*.sql` de la misma carpeta para poblar datos de prueba, **en este orden** (por las claves foráneas): `direcciones`, `estados_asistencia`, `colegios`, `periodos_academicos`, `usuarios`, `cursos`, `docentes`, `asignaturas`, `estudiantes`, `evaluaciones`, `calificaciones`, `asistencias`.
 
 ### Paso 2: Crear el archivo `.env`
 En la raíz del proyecto (`Gestion_Escolar/`), crear o configurar el archivo `.env` con las credenciales de tu servidor MySQL:
