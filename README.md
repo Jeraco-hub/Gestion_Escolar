@@ -34,7 +34,9 @@ Gestion_Escolar/
 │
 ├── auxiliares/                    # Constantes globales y configuración transversal
 │   ├── __init__.py
-│   └── datos_app.py               # Nombre de app, versión y restricciones por defecto
+│   ├── datos_app.py               # Nombre de app, versión y restricciones por defecto
+│   ├── menu_app.py                # Textos y opciones de los menús de consola
+│   └── validaciones.py            # Validaciones de RUT, correo, largo, fecha y contraseña
 │
 ├── datos/                         # Capa de Acceso a Datos y Persistencia
 │   ├── __init__.py
@@ -84,11 +86,15 @@ Gestion_Escolar/
 │       └── 2026.09.30_14.59_Insert_asistencias.sql
 │
 ├── negocio/                       # Capa de Lógica de Negocio y Reglas
-│   └── __init__.py
+│   ├── __init__.py
+│   ├── negocio_estudiante.py      # Reglas de estudiantes: duplicados de RUT y matrícula, registro, baja lógica
+│   └── negocio_usuario.py         # Reglas de usuarios: correo único y contraseña con hash
 │
 └── presentacion/                  # Capa de Presentación e Interfaz de Consola
     ├── __init__.py
-    └── menu.py                    # Menú de consola y visualización formateada
+    ├── menu.py                    # Menú de consola y visualización formateada
+    ├── presentacion_estudiante.py # Entrada de datos y validaciones de estudiantes
+    └── presentacion_usuario.py    # Entrada de datos y contraseña segura de usuarios
 ```
 
 ---
@@ -119,7 +125,7 @@ El dominio modela de forma integral la gestión académica y administrativa de u
 ### Instalación de dependencias:
 
 ```powershell
-python -m pip install peewee PyMySQL python-decouple prettytable
+python -m pip install peewee PyMySQL python-decouple prettytable bcrypt
 ```
 
 O utilizando el archivo de requerimientos:
@@ -160,3 +166,12 @@ Para iniciar el sistema, ejecutar desde la raíz del proyecto:
 ```powershell
 python app.py
 ```
+
+
+---
+
+## 7. Funcionalidades Implementadas
+
+- **Gestión de Estudiantes**: listado, registro, modificación y baja lógica. Valida RUT (con dígito verificador), correo y largo de los datos, y avisa si el RUT o la matrícula ya existen. Al modificar no se pierden la fecha de nacimiento, el curso ni la dirección.
+- **Gestión de Usuarios**: listado, registro, modificación y baja lógica. El correo es único y la contraseña debe tener entre 8 y 15 caracteres, con mayúscula, minúscula, número y un símbolo (`! @ # $ % & /`). Se guarda con hash `bcrypt`.
+- **En construcción**: Gestión de Docentes, Cursos y Asignaturas, Reportes y Calificaciones.
