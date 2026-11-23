@@ -41,3 +41,16 @@ diccionario_menu_docentes = {
     '4': 'Eliminar Docente (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }
+
+menu_cursos_asignaturas = 'Menú Gestión de Cursos y Asignaturas'
+diccionario_menu_cursos_asignaturas = {
+    '1': 'Listado de Cursos',
+    '2': 'Registrar Curso',
+    '3': 'Modificar Curso',
+    '4': 'Eliminar Curso (Borrado Lógico)',
+    '5': 'Listado de Asignaturas',
+    '6': 'Registrar Asignatura',
+    '7': 'Modificar Asignatura',
+    '8': 'Eliminar Asignatura (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}

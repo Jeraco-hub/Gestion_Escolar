@@ -37,3 +37,9 @@ def actualizar_asignatura(id_asignatura, nombre, horas_semanales, docente, curso
 def eliminar_asignatura(id_asignatura):
     consulta = Asignatura.update(habilitado=0).where(Asignatura.id_asignatura == id_asignatura)
     consulta.execute()
+
+
+def buscar_asignatura(nombre, curso):
+    return Asignatura.get_or_none(
+        (Asignatura.nombre == nombre) & (Asignatura.curso == curso)
+    )

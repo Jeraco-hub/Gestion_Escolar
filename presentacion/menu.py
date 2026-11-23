@@ -4,6 +4,7 @@ from auxiliares import (
     mensaje_error_opcion,
     menu_principal, diccionario_menu_principal,
     menu_estudiantes, diccionario_menu_estudiantes,
+    menu_cursos_asignaturas, diccionario_menu_cursos_asignaturas,
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion
@@ -13,6 +14,18 @@ from presentacion.presentacion_estudiante import (
     crear_estudiante,
     modificar_estudiante,
     eliminar_estudiante
+)
+from presentacion.presentacion_curso import (
+    mostrar_listado_cursos,
+    crear_curso,
+    modificar_curso,
+    eliminar_curso
+)
+from presentacion.presentacion_asignatura import (
+    mostrar_listado_asignaturas,
+    crear_asignatura,
+    modificar_asignatura,
+    eliminar_asignatura
 )
 from presentacion.presentacion_docente import (
     mostrar_listado_docentes,
@@ -98,6 +111,35 @@ def cargar_menu_docentes():
             case _:
                 print(mensaje_error_opcion)
 
+def cargar_menu_cursos_asignaturas():
+    while True:
+        mostrar_menu(menu_cursos_asignaturas, diccionario_menu_cursos_asignaturas)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_cursos()
+            case '2':
+                crear_curso()
+            case '3':
+                modificar_curso()
+            case '4':
+                eliminar_curso()
+            case '5':
+                mostrar_listado_asignaturas()
+            case '6':
+                crear_asignatura()
+            case '7':
+                modificar_asignatura()
+            case '8':
+                eliminar_asignatura()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
@@ -130,7 +172,7 @@ def cargar_menu():
             case '2':
                 cargar_menu_docentes()
             case '3':
-                print('Módulo en construcción: Cursos y Asignaturas.\n')
+                cargar_menu_cursos_asignaturas()
             case '4':
                 print('Módulo en construcción: Calificaciones.\n')
             case '5':

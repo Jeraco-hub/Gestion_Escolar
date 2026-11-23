@@ -37,3 +37,10 @@ def actualizar_curso(id_curso, nivel, letra, periodo, colegio):
 def eliminar_curso(id_curso):
     consulta = Curso.update(habilitado=0).where(Curso.id_curso == id_curso)
     consulta.execute()
+
+
+def buscar_curso(nivel, letra, periodo, colegio):
+    return Curso.get_or_none(
+        (Curso.nivel == nivel) & (Curso.letra == letra) &
+        (Curso.periodo == periodo) & (Curso.colegio == colegio)
+    )
