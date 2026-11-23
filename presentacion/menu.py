@@ -5,6 +5,7 @@ from auxiliares import (
     menu_principal, diccionario_menu_principal,
     menu_estudiantes, diccionario_menu_estudiantes,
     menu_cursos_asignaturas, diccionario_menu_cursos_asignaturas,
+    menu_calificaciones, diccionario_menu_calificaciones,
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion
@@ -26,6 +27,13 @@ from presentacion.presentacion_asignatura import (
     crear_asignatura,
     modificar_asignatura,
     eliminar_asignatura
+)
+from presentacion.presentacion_calificacion import (
+    mostrar_listado_calificaciones,
+    mostrar_calificaciones_estudiante,
+    crear_calificacion,
+    modificar_calificacion,
+    eliminar_calificacion
 )
 from presentacion.presentacion_docente import (
     mostrar_listado_docentes,
@@ -140,6 +148,29 @@ def cargar_menu_cursos_asignaturas():
             case _:
                 print(mensaje_error_opcion)
 
+def cargar_menu_calificaciones():
+    while True:
+        mostrar_menu(menu_calificaciones, diccionario_menu_calificaciones)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_calificaciones()
+            case '2':
+                mostrar_calificaciones_estudiante()
+            case '3':
+                crear_calificacion()
+            case '4':
+                modificar_calificacion()
+            case '5':
+                eliminar_calificacion()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
@@ -174,7 +205,7 @@ def cargar_menu():
             case '3':
                 cargar_menu_cursos_asignaturas()
             case '4':
-                print('Módulo en construcción: Calificaciones.\n')
+                cargar_menu_calificaciones()
             case '5':
                 cargar_menu_configuracion()
             case '6':

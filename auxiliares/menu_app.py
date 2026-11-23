@@ -54,3 +54,13 @@ diccionario_menu_cursos_asignaturas = {
     '8': 'Eliminar Asignatura (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }
+
+menu_calificaciones = 'Menú Reportes y Calificaciones'
+diccionario_menu_calificaciones = {
+    '1': 'Listado de Calificaciones',
+    '2': 'Calificaciones por Estudiante (con promedio)',
+    '3': 'Registrar Calificación',
+    '4': 'Modificar Calificación',
+    '5': 'Eliminar Calificación (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
