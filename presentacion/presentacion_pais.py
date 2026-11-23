@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
 from auxiliares import mensaje_error
 from negocio.negocio_pais import procesar_listado_paises, crear_objeto_pais, modificar_objeto_pais
-from datos.repositorios.repositorio_pais import obtener_pais_nombre
+from datos.repositorio.repositorio_pais import obtener_pais_nombre
 
 def mostrar_listado_paises():
     try:

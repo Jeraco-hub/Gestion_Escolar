@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_periodo_academico import (
+from datos.repositorio.repo_periodo_academico import (
     listado_periodos,
     obtener_periodo,
     buscar_periodo,

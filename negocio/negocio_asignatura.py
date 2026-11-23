@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_asignatura import (
+from datos.repositorio.repo_asignatura import (
     listado_asignaturas,
     obtener_asignatura,
     buscar_asignatura,
@@ -7,8 +7,8 @@ from datos.repositorios.repo_asignatura import (
     actualizar_asignatura,
     eliminar_asignatura
 )
-from datos.repositorios.repo_curso import obtener_curso
-from datos.repositorios.repo_docente import obtener_docente
+from datos.repositorio.repo_curso import obtener_curso
+from datos.repositorio.repo_docente import obtener_docente
 from auxiliares import mensaje_error
 
 

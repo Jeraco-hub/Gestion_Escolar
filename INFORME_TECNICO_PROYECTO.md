@@ -86,7 +86,7 @@ La aplicación está organizada siguiendo el patrón arquitectónico clásico de
 ```mermaid
 flowchart TD
     subgraph CAPA_PRESENTACION["1. Capa de Presentación (presentacion/)"]
-        UI["app.py (Punto de entrada)"]
+        UI["main.py (Punto de entrada)"]
         MENU["menu.py (Menú interactivo PrettyTable)"]
     end
 
@@ -113,13 +113,13 @@ flowchart TD
 ```
 
 ### Descripción de Componentes:
-- **`app.py`:** Punto de arranque del programa. Inicializa el ciclo de vida de la aplicación e invoca al menú principal.
+- **`main.py`:** Punto de arranque del programa. Inicializa el ciclo de vida de la aplicación e invoca al menú principal.
 - **`auxiliares/`:** Módulo transversal que contiene variables globales (`nombre_app`, `version_app`) y constantes como `defecto = "DEFAULT 1"`.
 - **`presentacion/`:** Interfaz de usuario por consola. Construye tablas legibles mediante `PrettyTable` y recopila entradas del usuario.
 - **`negocio/`:** Alberga las reglas de negocio, validaciones y transformaciones lógicas antes de persistir o presentar.
 - **`datos/conexion.py`:** Centraliza la conexión hacia MySQL usando `python-decouple` para no quemar contraseñas en el código fuente.
 - **`datos/modelos/`:** Un archivo por cada tabla relacional con su mapeo ORM.
-- **`datos/repositorios/`:** Funciones de persistencia agrupadas por entidad (`listado_`, `obtener_`, `registrar_`, `actualizar_`, `eliminar_`).
+- **`datos/repositorio/`:** Funciones de persistencia agrupadas por entidad (`listado_`, `obtener_`, `registrar_`, `actualizar_`, `eliminar_`).
 - **`datos/sql/`:** Scripts DDL y DML para recrear y poblar la base de datos desde cero en cualquier equipo.
 
 ---
@@ -167,7 +167,7 @@ erDiagram
 
 ## 5. Implementación del Patrón Repositorio y CRUD
 
-Cada entidad cuenta con un repositorio homólogo en `datos/repositorios/` que ofrece operaciones atómicas estandarizadas:
+Cada entidad cuenta con un repositorio homólogo en `datos/repositorio/` que ofrece operaciones atómicas estandarizadas:
 
 ```python
 # Ejemplo: repo_estudiante.py
@@ -228,7 +228,7 @@ def eliminar_estudiante(id_estudiante):
 
 4. **Ejecución:**
    ```powershell
-   python app.py
+   python main.py
    ```
 
 ---

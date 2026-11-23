@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_direccion import (
+from datos.repositorio.repo_direccion import (
     listado_direcciones,
     obtener_direccion,
     buscar_direccion,

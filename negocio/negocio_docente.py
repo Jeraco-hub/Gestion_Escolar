@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_docente import (
+from datos.repositorio.repo_docente import (
     listado_docentes,
     buscar_por_rut,
     buscar_por_correo,

@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repositorio_pais import listado_paises, buscar_paises, guardar_pais
+from datos.repositorio.repositorio_pais import listado_paises, buscar_paises, guardar_pais
 from datos.modelos.pais import Pais
 from auxiliares import mensaje_error
 

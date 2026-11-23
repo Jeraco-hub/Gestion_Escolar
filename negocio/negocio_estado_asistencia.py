@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_estado_asistencia import (
+from datos.repositorio.repo_estado_asistencia import (
     listado_estados_asistencia,
     obtener_estado_asistencia,
     buscar_estado_asistencia,

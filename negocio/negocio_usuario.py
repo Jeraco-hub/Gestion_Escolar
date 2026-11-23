@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_usuario import (
+from datos.repositorio.repo_usuario import (
     listado_usuarios,
     buscar_por_correo,
     registrar_usuario,

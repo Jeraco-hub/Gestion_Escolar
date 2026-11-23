@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from datos.repositorios.repo_evaluacion import (
+from datos.repositorio.repo_evaluacion import (
     listado_evaluaciones,
     obtener_evaluacion,
     evaluaciones_por_asignatura,
@@ -7,7 +7,7 @@ from datos.repositorios.repo_evaluacion import (
     actualizar_evaluacion,
     eliminar_evaluacion
 )
-from datos.repositorios.repo_asignatura import obtener_asignatura
+from datos.repositorio.repo_asignatura import obtener_asignatura
 from auxiliares import mensaje_error
 
 

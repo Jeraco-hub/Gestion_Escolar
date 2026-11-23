@@ -27,16 +27,16 @@ El proyecto implementa una arquitectura en capas con **alta cohesión** y **bajo
 ```text
 Gestion_Escolar/
 │
-├── app.py                         # Punto de entrada (login + menú principal)
+├── main.py                         # Punto de entrada (login + menú principal)
 ├── .env                           # Variables de entorno para MySQL (excluido en git)
 ├── requirements.txt               # Dependencias del proyecto
 ├── README.md                      # Documentación del sistema
 │
 ├── auxiliares/                    # Constantes globales y configuración transversal
 │   ├── __init__.py
-│   ├── datos_app.py               # Nombre de app, versión y restricciones por defecto
+│   ├── datos_main.py               # Nombre de app, versión y restricciones por defecto
 │   ├── entradas.py                # Helpers de entrada (pedir_texto, pedir_entero, pedir_fecha, pedir_ponderacion)
-│   ├── menu_app.py                # Textos y opciones de los menús de consola
+│   ├── menu_main.py                # Textos y opciones de los menús de consola
 │   └── validaciones.py            # Validaciones de RUT, correo, largo, fecha y contraseña
 │
 ├── datos/                         # Capa de Acceso a Datos y Persistencia
@@ -57,7 +57,7 @@ Gestion_Escolar/
 │   │   ├── periodo_academico.py
 │   │   └── usuario.py
 │   │
-│   ├── repositorios/              # Operaciones CRUD por cada entidad
+│   ├── repositorio/              # Operaciones CRUD por cada entidad
 │   │   ├── __init__.py
 │   │   ├── repo_asignatura.py
 │   │   ├── repo_asistencia.py
@@ -173,7 +173,7 @@ password=tu_contraseña_aqui
 ## 6. Ejecución del Sistema
 
 ```powershell
-python app.py
+python main.py
 ```
 
 Al arrancar, aparece el **Inicio de Sesión**. Ingresa con:

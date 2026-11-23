@@ -1,5 +1,5 @@
 from datos.modelos.estudiante import Estudiante
-from datos.repositorios.repo_estudiante import (
+from datos.repositorio.repo_estudiante import (
     listado_estudiantes,
     obtener_estudiante,
     buscar_por_rut,

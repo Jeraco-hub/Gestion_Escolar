@@ -1,6 +1,6 @@
 from datetime import date
 from prettytable import PrettyTable
-from datos.repositorios.repo_calificacion import (
+from datos.repositorio.repo_calificacion import (
     listado_calificaciones,
     obtener_calificacion,
     calificaciones_por_estudiante,
@@ -8,8 +8,8 @@ from datos.repositorios.repo_calificacion import (
     actualizar_calificacion,
     eliminar_calificacion
 )
-from datos.repositorios.repo_estudiante import obtener_estudiante
-from datos.repositorios.repo_evaluacion import obtener_evaluacion
+from datos.repositorio.repo_estudiante import obtener_estudiante
+from datos.repositorio.repo_evaluacion import obtener_evaluacion
 from auxiliares import mensaje_error
 
 
