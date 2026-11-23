@@ -43,3 +43,37 @@ def pedir_nota(etiqueta, opcional=False):
         if 1.0 <= nota <= 7.0:
             return round(nota, 1)
         print('La nota debe estar entre 1.0 y 7.0.\n')
+
+from datetime import datetime
+
+
+def pedir_fecha(etiqueta, opcional=False):
+    while True:
+        entrada = input(etiqueta).strip()
+        if entrada == '':
+            if opcional:
+                return None
+            print('Este dato es obligatorio, ingrese nuevamente...\n')
+            continue
+        try:
+            return datetime.strptime(entrada, '%d-%m-%Y').date()
+        except ValueError:
+            print('Ingrese una fecha válida con formato DD-MM-AAAA (ej: 15-06-2026).\n')
+
+
+def pedir_ponderacion(etiqueta, opcional=False):
+    while True:
+        entrada = input(etiqueta).strip().replace(',', '.')
+        if entrada == '':
+            if opcional:
+                return None
+            print('Este dato es obligatorio, ingrese nuevamente...\n')
+            continue
+        try:
+            valor = float(entrada)
+        except ValueError:
+            print('Ingrese un número válido (ej: 30).\n')
+            continue
+        if 0 < valor <= 100:
+            return round(valor, 1)
+        print('La ponderación debe estar entre 1 y 100.\n')

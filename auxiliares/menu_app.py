@@ -30,6 +30,16 @@ diccionario_menu_usuarios = {
 menu_configuracion = 'Menú Configuración del Sistema'
 diccionario_menu_configuracion = {
     '1': 'Información de la Aplicación',
+    '2': 'Gestión de Países',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_pais = 'Menú Gestión de Países'
+diccionario_menu_pais = {
+    '1': 'Listado de Países',
+    '2': 'Registrar País',
+    '3': 'Modificar País',
+    '4': 'Eliminar País (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }
 
@@ -62,5 +72,9 @@ diccionario_menu_calificaciones = {
     '3': 'Registrar Calificación',
     '4': 'Modificar Calificación',
     '5': 'Eliminar Calificación (Borrado Lógico)',
+    '6': 'Listado de Evaluaciones',
+    '7': 'Registrar Evaluación',
+    '8': 'Modificar Evaluación',
+    '9': 'Eliminar Evaluación (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }

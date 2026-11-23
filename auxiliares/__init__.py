@@ -11,5 +11,6 @@ from auxiliares.menu_app import (
     menu_calificaciones, diccionario_menu_calificaciones,
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
-    menu_configuracion, diccionario_menu_configuracion
+    menu_configuracion, diccionario_menu_configuracion,
+    menu_pais, diccionario_menu_pais
 )

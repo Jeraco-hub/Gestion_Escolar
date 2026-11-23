@@ -8,7 +8,8 @@ from auxiliares import (
     menu_calificaciones, diccionario_menu_calificaciones,
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
-    menu_configuracion, diccionario_menu_configuracion
+    menu_configuracion, diccionario_menu_configuracion,
+    menu_pais, diccionario_menu_pais
 )
 from presentacion.presentacion_estudiante import (
     mostrar_listado_estudiantes,
@@ -34,6 +35,18 @@ from presentacion.presentacion_calificacion import (
     crear_calificacion,
     modificar_calificacion,
     eliminar_calificacion
+)
+from presentacion.presentacion_evaluacion import (
+    mostrar_listado_evaluaciones,
+    crear_evaluacion,
+    modificar_evaluacion,
+    eliminar_evaluacion
+)
+from presentacion.presentacion_pais import (
+    mostrar_listado_paises,
+    crear_pais,
+    modificar_pais,
+    eliminar_pais
 )
 from presentacion.presentacion_docente import (
     mostrar_listado_docentes,
@@ -165,6 +178,43 @@ def cargar_menu_calificaciones():
                 modificar_calificacion()
             case '5':
                 eliminar_calificacion()
+            case '6':
+                mostrar_listado_evaluaciones()
+            case '7':
+                crear_evaluacion()
+            case '8':
+                modificar_evaluacion()
+            case '9':
+                eliminar_evaluacion()
+            case '6':
+                mostrar_listado_evaluaciones()
+            case '7':
+                crear_evaluacion()
+            case '8':
+                modificar_evaluacion()
+            case '9':
+                eliminar_evaluacion()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_pais():
+    while True:
+        mostrar_menu(menu_pais, diccionario_menu_pais)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_paises()
+            case '2':
+                crear_pais()
+            case '3':
+                modificar_pais()
+            case '4':
+                eliminar_pais()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break
@@ -181,7 +231,7 @@ def cargar_menu_configuracion():
             case '1':
                 print(f'{nombre_app} - Versión activa: {version_app}\n')
             case '2':
-                print('Acceso a listado de direcciones...\n')
+                cargar_menu_pais()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break
