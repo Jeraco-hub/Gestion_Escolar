@@ -1,4 +1,4 @@
-import getpass
+import maskpass
 import bcrypt
 from prettytable import PrettyTable
 from auxiliares import mensaje_error
@@ -53,7 +53,7 @@ def solicitar_contrasena():
     print('- Al menos una mayúscula, una minúscula y un número')
     print('- Al menos un símbolo: ! @ # $ % & /')
     while True:
-        contrasena = getpass.getpass('Contraseña: ')
+        contrasena = maskpass.askpass(prompt='Contraseña: ', mask='*')
         contrasena, errores = validar_contrasena(contrasena)
         if errores:
             print('Contraseña inválida:')
@@ -61,7 +61,7 @@ def solicitar_contrasena():
                 print('-', error)
             print()
             continue
-        repetida = getpass.getpass('Repita la contraseña: ')
+        repetida = maskpass.askpass(prompt='Repita la contraseña: ', mask='*')
         if repetida != contrasena:
             print('Las contraseñas no coinciden, ingrese nuevamente...\n')
             continue

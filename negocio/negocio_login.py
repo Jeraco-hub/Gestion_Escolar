@@ -11,15 +11,13 @@ def validar_credenciales(correo: str, contrasena: str):
         if not usuario:
             return None
 
-        guardada = usuario.contrasena or ''
-        if guardada.startswith('$2b$') or guardada.startswith('$2a$'):
-            if bcrypt.checkpw(contrasena.encode('utf-8'), guardada.encode('utf-8')):
-                return usuario
-            return None
-        else:
-            if guardada == contrasena:
-                return usuario
-            return None
+        guardada = (usuario.contrasena or '').encode('utf-8')
+        if bcrypt.checkpw(contrasena.encode('utf-8'), guardada):
+            return usuario
+        return None
+    except ValueError:
+        # Hash inválido o contraseña demasiado larga: no se permite el acceso
+        return None
     except Exception as error:
         print(f'{mensaje_error}{error}')
         return None

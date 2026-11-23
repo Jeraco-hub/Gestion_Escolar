@@ -21,7 +21,7 @@ INSERT INTO periodos_academicos (ano, semestre, fecha_inicio, fecha_fin, colegio
 (2025, 2, '2025-08-01', '2025-12-15', 1);
 
 INSERT INTO usuarios (nombre, correo, contrasena, colegio) VALUES
-('Administrador', 'admin@colegio.cl', 'admin123', 1);
+('Administrador', 'admin@colegio.cl', '$2b$12$Egsob/eYWEHRSvSWtBsRVuhxoHfBWr6qRjKPLXyeYeqi71QrPodU6', 1);
 
 INSERT INTO cursos (nivel, letra, periodo, colegio) VALUES
 ('1 Medio', 'A', 1, 1),

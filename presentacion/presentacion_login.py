@@ -1,5 +1,4 @@
-import getpass
-from auxiliares import mensaje_error
+import maskpass
 from negocio.negocio_login import validar_credenciales
 
 
@@ -10,7 +9,7 @@ def iniciar_sesion():
     while intentos < max_intentos:
         correo = input('Correo: ').strip()
         try:
-            contrasena = getpass.getpass('Contraseña: ')
+            contrasena = maskpass.askpass(prompt='Contraseña: ', mask='*')
         except Exception:
             contrasena = ''
         usuario = validar_credenciales(correo, contrasena)
