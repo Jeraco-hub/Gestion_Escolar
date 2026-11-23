@@ -4,6 +4,7 @@ from auxiliares import (
     mensaje_error_opcion,
     menu_principal, diccionario_menu_principal,
     menu_estudiantes, diccionario_menu_estudiantes,
+    menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion
 )
@@ -12,6 +13,12 @@ from presentacion.presentacion_estudiante import (
     crear_estudiante,
     modificar_estudiante,
     eliminar_estudiante
+)
+from presentacion.presentacion_docente import (
+    mostrar_listado_docentes,
+    crear_docente,
+    modificar_docente,
+    eliminar_docente
 )
 from presentacion.presentacion_usuario import (
     mostrar_listado_usuarios,
@@ -70,6 +77,27 @@ def cargar_menu_usuarios():
             case _:
                 print(mensaje_error_opcion)
 
+def cargar_menu_docentes():
+    while True:
+        mostrar_menu(menu_docentes, diccionario_menu_docentes)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_docentes()
+            case '2':
+                crear_docente()
+            case '3':
+                modificar_docente()
+            case '4':
+                eliminar_docente()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
@@ -100,7 +128,7 @@ def cargar_menu():
             case '1':
                 cargar_menu_estudiantes()
             case '2':
-                print('Módulo en construcción: Gestión de Docentes.\n')
+                cargar_menu_docentes()
             case '3':
                 print('Módulo en construcción: Cursos y Asignaturas.\n')
             case '4':

@@ -51,3 +51,8 @@ def actualizar_docente(id_docente, nombre, apellido, rut, especialidad, fecha_na
 def eliminar_docente(id_docente):
     consulta = Docente.update(habilitado=0).where(Docente.id_docente == id_docente)
     consulta.execute()
+
+
+def buscar_por_correo(correo):
+    docente = Docente.get_or_none(Docente.correo == correo)
+    return docente

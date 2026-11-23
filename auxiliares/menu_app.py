@@ -32,3 +32,12 @@ diccionario_menu_configuracion = {
     '1': 'Información de la Aplicación',
     '0': 'Volver al Menú Principal\n'
 }
+
+menu_docentes = 'Menú Gestión de Docentes'
+diccionario_menu_docentes = {
+    '1': 'Listado de Docentes',
+    '2': 'Registrar Docente',
+    '3': 'Modificar Docente',
+    '4': 'Eliminar Docente (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
