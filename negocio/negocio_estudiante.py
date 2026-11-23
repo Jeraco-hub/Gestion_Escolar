@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 from datos import (
     listado_estudiantes,
     buscar_por_rut,
+    buscar_por_matricula,
     registrar_estudiante,
     actualizar_estudiante,
     eliminar_estudiante
@@ -29,11 +30,22 @@ def procesar_listado_estudiantes(tabla: PrettyTable):
 def registrar_nuevo_estudiante(nombre: str, apellido: str, rut: str, matricula: str, correo: str, telefono: str):
     try:
         # Validación de duplicados antes de insertar
-        existente = buscar_por_rut(rut)
-        if existente and existente.habilitado == 1:
-            print(f'Error: Ya existe un estudiante registrado con el RUT {rut}.')
+        existente_rut = buscar_por_rut(rut)
+        if existente_rut:
+            if existente_rut.habilitado == 1:
+                print('Ya existe un estudiante activo con ese RUT.')
+            else:
+                print('Ya existe un estudiante deshabilitado con ese RUT.')
             return None
-        
+
+        existente_matricula = buscar_por_matricula(matricula)
+        if existente_matricula:
+            if existente_matricula.habilitado == 1:
+                print('Ya existe un estudiante activo con esa matrícula.')
+            else:
+                print('Ya existe un estudiante deshabilitado con esa matrícula.')
+            return None
+
         nuevo = registrar_estudiante(
             nombre=nombre,
             apellido=apellido,
@@ -48,6 +60,8 @@ def registrar_nuevo_estudiante(nombre: str, apellido: str, rut: str, matricula: 
         if nuevo:
             print(f'Estudiante {nombre} {apellido} registrado con éxito.')
             return nuevo
+        print('No se pudo registrar el estudiante.')
+        return None
     except Exception as error:
         print(f'{mensaje_error}{error}')
         return None

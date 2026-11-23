@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 from auxiliares import mensaje_error
+from auxiliares.validaciones import validar_rut, validar_largo_string, validar_correo
 from datos import buscar_por_rut
 from negocio import (
     procesar_listado_estudiantes,
@@ -19,22 +20,54 @@ def mostrar_listado_estudiantes():
     except Exception as error:
         print(f'{mensaje_error}{error}')
 
-def crear_estudiante():
-    print("\n--- Registrar Nuevo Estudiante ---")
+def pedir_rut():
     rut = ''
     while rut == '':
-        rut = input('Ingrese RUT (ej: 23.456.789-1): ')
-    nombre = ''
-    while nombre == '':
-        nombre = input('Ingrese Nombre: ')
-    apellido = ''
-    while apellido == '':
-        apellido = input('Ingrese Apellido: ')
-    matricula = ''
-    while matricula == '':
-        matricula = input('Ingrese Matrícula (ej: MAT-2026-001): ')
-    correo = input('Ingrese Correo electrónico (opcional): ')
-    telefono = input('Ingrese Teléfono (opcional): ')
+        rut, mensaje = validar_rut(input('Ingrese RUT (ej: 12.345.678-5): ').strip())
+        if rut == '':
+            print(mensaje)
+    return rut
+
+def pedir_texto(etiqueta, largo):
+    valor = ''
+    while valor == '':
+        ingresado = input(etiqueta).strip()
+        valor, mensaje = validar_largo_string(ingresado, largo)
+        if valor == '':
+            if ingresado == '':
+                print('Este dato es obligatorio, ingrese nuevamente...\n')
+            else:
+                print(mensaje)
+    return valor
+
+def pedir_correo():
+    while True:
+        correo = input('Ingrese Correo electrónico (opcional): ').strip()
+        if correo == '':
+            return ''
+        correo, mensaje = validar_correo(correo)
+        if correo != '':
+            return correo
+        print(mensaje)
+
+def pedir_telefono():
+    while True:
+        telefono = input('Ingrese Teléfono (opcional): ').strip()
+        if telefono == '':
+            return ''
+        telefono, mensaje = validar_largo_string(telefono, 15)
+        if telefono != '':
+            return telefono
+        print(mensaje)
+
+def crear_estudiante():
+    print("\n--- Registrar Nuevo Estudiante ---")
+    rut = pedir_rut()
+    nombre = pedir_texto('Ingrese Nombre: ', 50)
+    apellido = pedir_texto('Ingrese Apellido: ', 50)
+    matricula = pedir_texto('Ingrese Matrícula (ej: MAT-2026-001): ', 20)
+    correo = pedir_correo()
+    telefono = pedir_telefono()
 
     registrar_nuevo_estudiante(nombre, apellido, rut, matricula, correo, telefono)
 
