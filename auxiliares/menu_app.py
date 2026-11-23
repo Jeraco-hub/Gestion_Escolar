@@ -31,6 +31,46 @@ menu_configuracion = 'Menú Configuración del Sistema'
 diccionario_menu_configuracion = {
     '1': 'Información de la Aplicación',
     '2': 'Gestión de Países',
+    '3': 'Gestión de Estados de Asistencia',
+    '4': 'Gestión de Direcciones',
+    '5': 'Gestión de Colegios',
+    '6': 'Gestión de Períodos Académicos',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_periodo = 'Menú Gestión de Períodos Académicos'
+diccionario_menu_periodo = {
+    '1': 'Listado de Períodos',
+    '2': 'Registrar Período',
+    '3': 'Modificar Período',
+    '4': 'Eliminar Período (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_colegio = 'Menú Gestión de Colegios'
+diccionario_menu_colegio = {
+    '1': 'Listado de Colegios',
+    '2': 'Registrar Colegio',
+    '3': 'Modificar Colegio',
+    '4': 'Eliminar Colegio (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_direccion = 'Menú Gestión de Direcciones'
+diccionario_menu_direccion = {
+    '1': 'Listado de Direcciones',
+    '2': 'Registrar Dirección',
+    '3': 'Modificar Dirección',
+    '4': 'Eliminar Dirección (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_estado_asistencia = 'Menú Gestión de Estados de Asistencia'
+diccionario_menu_estado_asistencia = {
+    '1': 'Listado de Estados de Asistencia',
+    '2': 'Registrar Estado de Asistencia',
+    '3': 'Modificar Estado de Asistencia',
+    '4': 'Eliminar Estado de Asistencia (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }
 
@@ -76,5 +116,22 @@ diccionario_menu_calificaciones = {
     '7': 'Registrar Evaluación',
     '8': 'Modificar Evaluación',
     '9': 'Eliminar Evaluación (Borrado Lógico)',
+    '10': 'Listado de Asistencias',
+    '11': 'Asistencias por Estudiante',
+    '12': 'Asistencias por Curso y Fecha',
+    '13': 'Registrar Asistencia',
+    '14': 'Modificar Asistencia',
+    '15': 'Eliminar Asistencia (Borrado Lógico)',
+    '0': 'Volver al Menú Principal\n'
+}
+
+menu_asistencia = 'Menú Gestión de Asistencias'
+diccionario_menu_asistencia = {
+    '1': 'Listado de Asistencias',
+    '2': 'Asistencias por Estudiante',
+    '3': 'Asistencias por Curso y Fecha',
+    '4': 'Registrar Asistencia',
+    '5': 'Modificar Asistencia',
+    '6': 'Eliminar Asistencia (Borrado Lógico)',
     '0': 'Volver al Menú Principal\n'
 }

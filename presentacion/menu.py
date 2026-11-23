@@ -9,7 +9,12 @@ from auxiliares import (
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion,
-    menu_pais, diccionario_menu_pais
+    menu_pais, diccionario_menu_pais,
+    menu_estado_asistencia, diccionario_menu_estado_asistencia,
+    menu_direccion, diccionario_menu_direccion,
+    menu_colegio, diccionario_menu_colegio,
+    menu_periodo, diccionario_menu_periodo,
+    menu_asistencia, diccionario_menu_asistencia
 )
 from presentacion.presentacion_estudiante import (
     mostrar_listado_estudiantes,
@@ -41,6 +46,38 @@ from presentacion.presentacion_evaluacion import (
     crear_evaluacion,
     modificar_evaluacion,
     eliminar_evaluacion
+)
+from presentacion.presentacion_asistencia import (
+    mostrar_listado_asistencias,
+    mostrar_asistencias_estudiante,
+    mostrar_asistencias_curso,
+    crear_asistencia,
+    modificar_asistencia,
+    eliminar_asistencia
+)
+from presentacion.presentacion_periodo_academico import (
+    mostrar_listado_periodos,
+    crear_periodo,
+    modificar_periodo,
+    eliminar_periodo
+)
+from presentacion.presentacion_colegio import (
+    mostrar_listado_colegios,
+    crear_colegio,
+    modificar_colegio,
+    eliminar_colegio
+)
+from presentacion.presentacion_direccion import (
+    mostrar_listado_direcciones,
+    crear_direccion,
+    modificar_direccion,
+    eliminar_direccion
+)
+from presentacion.presentacion_estado_asistencia import (
+    mostrar_listado_estados,
+    crear_estado,
+    modificar_estado,
+    eliminar_estado
 )
 from presentacion.presentacion_pais import (
     mostrar_listado_paises,
@@ -221,6 +258,115 @@ def cargar_menu_pais():
             case _:
                 print(mensaje_error_opcion)
 
+def cargar_menu_estado_asistencia():
+    while True:
+        mostrar_menu(menu_estado_asistencia, diccionario_menu_estado_asistencia)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_estados()
+            case '2':
+                crear_estado()
+            case '3':
+                modificar_estado()
+            case '4':
+                eliminar_estado()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_direccion():
+    while True:
+        mostrar_menu(menu_direccion, diccionario_menu_direccion)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_direcciones()
+            case '2':
+                crear_direccion()
+            case '3':
+                modificar_direccion()
+            case '4':
+                eliminar_direccion()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_colegio():
+    while True:
+        mostrar_menu(menu_colegio, diccionario_menu_colegio)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_colegios()
+            case '2':
+                crear_colegio()
+            case '3':
+                modificar_colegio()
+            case '4':
+                eliminar_colegio()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_periodo():
+    while True:
+        mostrar_menu(menu_periodo, diccionario_menu_periodo)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_periodos()
+            case '2':
+                crear_periodo()
+            case '3':
+                modificar_periodo()
+            case '4':
+                eliminar_periodo()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
+def cargar_menu_asistencia():
+    while True:
+        mostrar_menu(menu_asistencia, diccionario_menu_asistencia)
+        opcion = input(PROMPT_OPCION)
+        print()
+
+        match opcion:
+            case '1':
+                mostrar_listado_asistencias()
+            case '2':
+                mostrar_asistencias_estudiante()
+            case '3':
+                mostrar_asistencias_curso()
+            case '4':
+                crear_asistencia()
+            case '5':
+                modificar_asistencia()
+            case '6':
+                eliminar_asistencia()
+            case '0':
+                print('Volviendo al Menú Principal...\n')
+                break
+            case _:
+                print(mensaje_error_opcion)
+
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
@@ -232,6 +378,16 @@ def cargar_menu_configuracion():
                 print(f'{nombre_app} - Versión activa: {version_app}\n')
             case '2':
                 cargar_menu_pais()
+            case '3':
+                cargar_menu_estado_asistencia()
+            case '4':
+                cargar_menu_direccion()
+            case '5':
+                cargar_menu_colegio()
+            case '6':
+                cargar_menu_periodo()
+            case '10':
+                cargar_menu_asistencia()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break

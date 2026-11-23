@@ -12,5 +12,10 @@ from auxiliares.menu_app import (
     menu_docentes, diccionario_menu_docentes,
     menu_usuarios, diccionario_menu_usuarios,
     menu_configuracion, diccionario_menu_configuracion,
-    menu_pais, diccionario_menu_pais
+    menu_pais, diccionario_menu_pais,
+    menu_estado_asistencia, diccionario_menu_estado_asistencia,
+    menu_direccion, diccionario_menu_direccion,
+    menu_colegio, diccionario_menu_colegio,
+    menu_periodo, diccionario_menu_periodo,
+    menu_asistencia, diccionario_menu_asistencia
 )
