@@ -5,7 +5,7 @@
 
 **Asignatura:** Programación Orientada a Objetos  
 **Docente:** Erick Bailey  
-**Integrantes:** Darío, Miguel Nahuel  
+**Integrantes:** Darío Candia, Miguel Nahuel  
 **Proyecto:** Sistema de Gestión Escolar  
 **Tecnologías:** Python 3.11+, Peewee ORM, PyMySQL, MySQL Server, Python-Decouple, PrettyTable, bcrypt, MaskPass  
 **Fecha:** Octubre 2026  

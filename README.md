@@ -2,7 +2,7 @@
 
 ## Integrantes
 
-- **Darío**
+- **Darío Candia**
 - **Miguel Nahuel**
 
 **Asignatura:** Programación Orientada a Objetos - Evaluación N°3
