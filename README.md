@@ -2,7 +2,8 @@
 
 ## Integrantes
 
-
+- **Darío**
+- **Miguel Nahuel**
 
 **Asignatura:** Programación Orientada a Objetos - Evaluación N°3
 
@@ -34,7 +35,7 @@ El proyecto implementa una arquitectura en capas con **alta cohesión** y **bajo
 Gestion_Escolar/
 │
 ├── main.py                         # Punto de entrada (login + menú principal)
-├── .env                           # Variables de entorno para MySQL (excluido en git)
+├── .env.example                   # Plantilla de variables de entorno para MySQL
 ├── requirements.txt               # Dependencias del proyecto
 ├── README.md                      # Documentación del sistema
 │
@@ -48,7 +49,7 @@ Gestion_Escolar/
 ├── datos/                         # Capa de Acceso a Datos y Persistencia
 │   ├── __init__.py
 │   ├── conexion.py                # Conexión centralizada a MySQL con Peewee y Decouple
-│   ├── model_base.py                # Clase base ORM (ModelBase) compartida por los modelos
+│   ├── model_base.py               # Clase base ORM (ModelBase) compartida por los modelos
 │   │
 │   ├── modelos/                   # Modelos de datos (Clases ORM)
 │   │   ├── asignatura.py
@@ -82,10 +83,10 @@ Gestion_Escolar/
 │   │   └── repositorio_pais.py
 │   │
 │   └── sql/                       # Scripts DDL de creación y carga de datos iniciales
-│       ├── 01_crear_tablas.sql
+│       ├── 01_crear_tablas.sql    # DDL canónico (13 tablas)
 │       ├── 02_datos_prueba.sql
-│       ├── 2026.09.09_14.25_DDL_gestionescolar.sql
-│       └── 2026.09.30_*.sql (Insert por tabla)
+│       ├── 2026.09.09_14.25_DDL_gestionescolar.sql  # Histórico (Evaluación 2)
+│       └── 2026.09.30_*.sql       # Inserts por tabla
 │
 ├── negocio/                       # Capa de Lógica de Negocio y Reglas
 │   ├── __init__.py

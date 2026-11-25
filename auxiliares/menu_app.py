@@ -125,13 +125,3 @@ diccionario_menu_calificaciones = {
     '0': 'Volver al Menú Principal\n'
 }
 
-menu_asistencia = 'Menú Gestión de Asistencias'
-diccionario_menu_asistencia = {
-    '1': 'Listado de Asistencias',
-    '2': 'Asistencias por Estudiante',
-    '3': 'Asistencias por Curso y Fecha',
-    '4': 'Registrar Asistencia',
-    '5': 'Modificar Asistencia',
-    '6': 'Eliminar Asistencia (Borrado Lógico)',
-    '0': 'Volver al Menú Principal\n'
-}

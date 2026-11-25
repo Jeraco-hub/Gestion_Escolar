@@ -16,6 +16,5 @@ from auxiliares.menu_app import (
     menu_estado_asistencia, diccionario_menu_estado_asistencia,
     menu_direccion, diccionario_menu_direccion,
     menu_colegio, diccionario_menu_colegio,
-    menu_periodo, diccionario_menu_periodo,
-    menu_asistencia, diccionario_menu_asistencia
+    menu_periodo, diccionario_menu_periodo
 )

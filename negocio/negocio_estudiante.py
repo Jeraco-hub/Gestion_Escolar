@@ -9,6 +9,15 @@ from datos import (
 )
 from auxiliares import mensaje_error
 
+
+def estudiante_por_rut(rut):
+    try:
+        return buscar_por_rut(rut)
+    except Exception as error:
+        print(f'{mensaje_error}{error}')
+        return None
+
+
 def procesar_listado_estudiantes(tabla: PrettyTable):
     if tabla:
         tabla.field_names = ['ID', 'RUT', 'Nombre', 'Apellido', 'Matrícula', 'Correo', 'Teléfono']

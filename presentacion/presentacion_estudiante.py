@@ -1,9 +1,9 @@
 from prettytable import PrettyTable
 from auxiliares import mensaje_error
 from auxiliares.validaciones import validar_rut, validar_largo_string, validar_correo
-from datos import buscar_por_rut
 from negocio import (
     procesar_listado_estudiantes,
+    estudiante_por_rut,
     registrar_nuevo_estudiante,
     modificar_datos_estudiante,
     deshabilitar_estudiante
@@ -74,7 +74,7 @@ def crear_estudiante():
 def modificar_estudiante():
     print("\n--- Modificar Estudiante ---")
     rut = input('Ingrese RUT del estudiante a modificar: ')
-    estudiante = buscar_por_rut(rut)
+    estudiante = estudiante_por_rut(rut)
     if estudiante and estudiante.habilitado == 1:
         print(f'\nEstudiante encontrado: {estudiante.nombre} {estudiante.apellido} (Matrícula: {estudiante.matricula})')
         nuevo_nombre = input(f'Nuevo nombre [{estudiante.nombre}]: ') or estudiante.nombre
@@ -98,7 +98,7 @@ def modificar_estudiante():
 def eliminar_estudiante():
     print("\n--- Eliminar Estudiante ---")
     rut = input('Ingrese RUT del estudiante a eliminar: ')
-    estudiante = buscar_por_rut(rut)
+    estudiante = estudiante_por_rut(rut)
     if estudiante and estudiante.habilitado == 1:
         confirmacion = input(f'¿Está seguro de dar de baja a {estudiante.nombre} {estudiante.apellido}? (s/n): ')
         if confirmacion.lower() == 's':

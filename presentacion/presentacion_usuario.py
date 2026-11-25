@@ -1,5 +1,4 @@
 import maskpass
-import bcrypt
 from prettytable import PrettyTable
 from auxiliares import mensaje_error
 from auxiliares.validaciones import validar_largo_string, validar_correo, validar_contrasena
@@ -85,9 +84,8 @@ def crear_usuario():
     correo = solicitar_correo('Correo: ')
     colegio = solicitar_colegio('ID del colegio (opcional): ')
     contrasena = solicitar_contrasena()
-    hash_contrasena = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-    registrar_nuevo_usuario(nombre, correo, hash_contrasena, colegio if colegio != '' else None)
+    registrar_nuevo_usuario(nombre, correo, contrasena, colegio if colegio != '' else None)
 
 
 def modificar_usuario():

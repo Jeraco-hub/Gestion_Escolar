@@ -13,8 +13,7 @@ from auxiliares import (
     menu_estado_asistencia, diccionario_menu_estado_asistencia,
     menu_direccion, diccionario_menu_direccion,
     menu_colegio, diccionario_menu_colegio,
-    menu_periodo, diccionario_menu_periodo,
-    menu_asistencia, diccionario_menu_asistencia
+    menu_periodo, diccionario_menu_periodo
 )
 from presentacion.presentacion_estudiante import (
     mostrar_listado_estudiantes,
@@ -223,14 +222,18 @@ def cargar_menu_calificaciones():
                 modificar_evaluacion()
             case '9':
                 eliminar_evaluacion()
-            case '6':
-                mostrar_listado_evaluaciones()
-            case '7':
-                crear_evaluacion()
-            case '8':
-                modificar_evaluacion()
-            case '9':
-                eliminar_evaluacion()
+            case '10':
+                mostrar_listado_asistencias()
+            case '11':
+                mostrar_asistencias_estudiante()
+            case '12':
+                mostrar_asistencias_curso()
+            case '13':
+                crear_asistencia()
+            case '14':
+                modificar_asistencia()
+            case '15':
+                eliminar_asistencia()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break
@@ -342,31 +345,6 @@ def cargar_menu_periodo():
             case _:
                 print(mensaje_error_opcion)
 
-def cargar_menu_asistencia():
-    while True:
-        mostrar_menu(menu_asistencia, diccionario_menu_asistencia)
-        opcion = input(PROMPT_OPCION)
-        print()
-
-        match opcion:
-            case '1':
-                mostrar_listado_asistencias()
-            case '2':
-                mostrar_asistencias_estudiante()
-            case '3':
-                mostrar_asistencias_curso()
-            case '4':
-                crear_asistencia()
-            case '5':
-                modificar_asistencia()
-            case '6':
-                eliminar_asistencia()
-            case '0':
-                print('Volviendo al Menú Principal...\n')
-                break
-            case _:
-                print(mensaje_error_opcion)
-
 def cargar_menu_configuracion():
     while True:
         mostrar_menu(menu_configuracion, diccionario_menu_configuracion)
@@ -386,8 +364,6 @@ def cargar_menu_configuracion():
                 cargar_menu_colegio()
             case '6':
                 cargar_menu_periodo()
-            case '10':
-                cargar_menu_asistencia()
             case '0':
                 print('Volviendo al Menú Principal...\n')
                 break

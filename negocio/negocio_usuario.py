@@ -1,3 +1,4 @@
+import bcrypt
 from prettytable import PrettyTable
 from datos.repositorio.repo_usuario import (
     listado_usuarios,
@@ -27,7 +28,7 @@ def usuario_por_correo(correo: str):
         return None
 
 
-def registrar_nuevo_usuario(nombre: str, correo: str, contrasena_hash: str, colegio):
+def registrar_nuevo_usuario(nombre: str, correo: str, contrasena: str, colegio):
     try:
         existente = buscar_por_correo(correo)
         if existente:
@@ -37,6 +38,9 @@ def registrar_nuevo_usuario(nombre: str, correo: str, contrasena_hash: str, cole
                 print('Ya existe un usuario deshabilitado con ese correo.')
             return None
 
+        contrasena_hash = bcrypt.hashpw(
+            contrasena.encode('utf-8'), bcrypt.gensalt()
+        ).decode('utf-8')
         nuevo = registrar_usuario(nombre, correo, contrasena_hash, colegio)
         if nuevo:
             print(f'Usuario {nombre} registrado con éxito.')
